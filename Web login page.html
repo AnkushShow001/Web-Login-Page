@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #4A90E2, #9013FE);
+      overflow: hidden;
+    }
+
+    /* Floating circles in background */
+    body::before, body::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      animation: float 6s infinite ease-in-out;
+    }
+    body::before { width: 300px; height: 300px; top: -100px; left: -100px; }
+    body::after { width: 200px; height: 200px; bottom: -50px; right: -50px; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(30px) rotate(45deg); }
+    }
+
+    .login-container {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 300px;
+    }
+
+    h2 {
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      background: #fff;
+      color: #4A90E2;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #4A90E2;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    p {
+      color: yellow;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    const correctUsername = "ankush";
+    const correctPassword = "1234";
+
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const message = document.getElementById("message");
+
+      if(username === correctUsername && password === correctPassword) {
+        message.style.color = "lime";
+        message.innerText = "✅ Login Successful!";
+      } else {
+        message.style.color = "yellow";
+        message.innerText = "❌ Invalid Username or Password!";
+      }
+    }
+  </script>
+
+</body>
+</html>
